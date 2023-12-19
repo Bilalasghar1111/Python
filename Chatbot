@@ -1,0 +1,26 @@
+from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer
+
+# Create a new chatbot
+chatbot = ChatBot('MyChatBot')
+
+# Create a new trainer for the chatbot
+trainer = ChatterBotCorpusTrainer(chatbot)
+
+# Train the chatbot on English language data
+trainer.train('chatterbot.corpus.english')
+
+# You can train the chatbot further with your own data if needed
+
+# Interaction loop
+while True:
+    user_input = input("You: ")
+    
+    if user_input.lower() == 'exit':
+        print("ChatBot: Goodbye!")
+        break
+    
+    # Get the chatbot's response
+    response = chatbot.get_response(user_input)
+    
+    print("ChatBot:", response)
